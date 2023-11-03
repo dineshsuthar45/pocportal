@@ -19,7 +19,7 @@ export interface ILocaldata {
 
 const headers = {
   "Access-Control-Allow-Origin": "*",
-  "Content-Type": "application/json",
+  "Content-Type": "application/x-www-form-urlencoded",
 };
 
 const baseInstance = axios.create({
@@ -34,7 +34,10 @@ baseInstance.interceptors.response.use(
 
 const apiInstance = axios.create({
   baseURL: BASE_URL,
-  headers,
+  headers: {
+    ...headers,
+    "Content-Type": "application/json",
+  },
   timeout: 30000,
 });
 

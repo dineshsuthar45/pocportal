@@ -15,12 +15,7 @@ export interface autSliceStates {
 }
 
 export interface ILogindata {
-  username: string;
-  role: string;
-  token: string;
-  userid: string;
-  image_url: string;
-  preferred_lng: string;
+  access_token: string;
 }
 
 const initialState: autSliceStates = {
@@ -29,21 +24,21 @@ const initialState: autSliceStates = {
   isError: false,
 };
 
-export const loginUser = createAsyncThunk<
-  IAPIResponseSchema<ILogindata>,
-  ILoginSchema
->("auth/login", async (payload: ILoginSchema, thunkApi) => {
-  try {
-    const result = await loginAPI(payload);
-    if (result.data) return result.data;
-    return result;
-  } catch (err: any) {
-    if (!err.response) {
-      throw err;
+export const loginUser = createAsyncThunk<ILogindata, ILoginSchema>(
+  "auth/login",
+  async (payload: ILoginSchema, thunkApi) => {
+    try {
+      const result = await loginAPI(payload);
+      if (result.data) return result.data;
+      return result;
+    } catch (err: any) {
+      if (!err.response) {
+        throw err;
+      }
+      return thunkApi.rejectWithValue(err.response.data);
     }
-    return thunkApi.rejectWithValue(err.response.data);
   }
-});
+);
 
 export const authSlice = createSlice({
   name: "auth",
@@ -56,7 +51,7 @@ export const authSlice = createSlice({
       })
       .addCase(loginUser.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.data = action.payload.data;
+        state.data = action.payload;
       })
       .addCase(loginUser.rejected, (state) => {
         state.isLoading = false;

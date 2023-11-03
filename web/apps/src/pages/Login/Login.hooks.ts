@@ -88,7 +88,7 @@ const useLogin = () => {
         };
         const promise = dispatch(loginUser(payload));
         let res = await promise.unwrap();
-        const data: ILogindata = res.data;
+        const data: ILogindata = res;
         localStorage.setItem(LOCALSTORAGE_VARIABLE, JSON.stringify(data));
         setLoginDetails({
           username: "",
