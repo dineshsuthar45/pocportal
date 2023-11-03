@@ -1,6 +1,6 @@
 import { Backdrop, Box, Typography } from "@mui/material";
 import React from "react";
-import "../assets/Scss/loader.scss"
+import "../assets/Scss/loader.scss";
 
 interface LoaderProps {
   isLoading: boolean;

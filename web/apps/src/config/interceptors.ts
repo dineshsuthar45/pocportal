@@ -1,16 +1,17 @@
+import { LOCALSTORAGE_VARIABLE } from "../util/constants";
 import { ILocaldata } from "./axiosConfig";
 
 import { toast } from "react-toastify";
 
 export const getLocalAuth = (): ILocaldata | null => {
-  const storedAuth = localStorage.getItem("junto_local");
+  const storedAuth = localStorage.getItem(LOCALSTORAGE_VARIABLE);
   const authLocal: ILocaldata =
     storedAuth !== null ? JSON.parse(storedAuth) : null;
   return authLocal;
 };
 
 const requestHandler = (request: any) => {
-  // request.headers.Authorization = `token ${getLocalAuth()?.token}`;
+  request.headers.Authorization = `token ${getLocalAuth()?.token}`;
   request.headers["Access-Control-Allow-Origin"] = "*";
   return request;
 };

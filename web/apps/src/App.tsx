@@ -5,8 +5,9 @@ import {
 } from "react-router-dom";
 import Login from "./pages/Login/Login";
 import Unauthorize from "./pages/unAuthorize";
-import SideBar from "./pages/sideBar";
 import WriteUp from "./pages/Writeup/Writeup";
+import { ColorModeContext, IColorContext, useMode } from "./theme";
+import { Theme, ThemeProvider } from "@mui/material";
 
 const router = createBrowserRouter([
   {
@@ -28,11 +29,14 @@ const router = createBrowserRouter([
 ]);
 
 const App = () => {
+  const [theme, colorMode] = useMode();
   return (
-    <>
-      {/* <SideBar /> */}
-      <RouterProvider router={router} />
-    </>
+    <ColorModeContext.Provider value={colorMode as IColorContext}>
+      <ThemeProvider theme={theme as Theme}>
+        {/* <SideBar /> */}
+        <RouterProvider router={router} />
+      </ThemeProvider>
+    </ColorModeContext.Provider>
   );
 };
 

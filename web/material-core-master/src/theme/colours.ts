@@ -8,7 +8,7 @@ export const MColours = {
 	darkPurple: '#412C69',
 	sellFuchsia: '#EE2A65',
 	lightBlue: '#01B5E6',
-	blue: '#1489FF',
+	blue: '#467FD8',
 	darkBlue: '#0E5FB2',
 	ALightBlue: '#36D3FE',
 	ADarkBlue: '#028CB1',
@@ -43,7 +43,10 @@ export const MColours = {
 		600: '#475159',
 		700: '#2F3135',
 		800: '#24252A',
-		900: '#181A1F',
+		900: '#202226',
+	},
+	lightBlueScale: {
+		50: '#EEF3FB',
 	},
 };
 

@@ -34,7 +34,7 @@ export interface IGlobaltextFieldProps {
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   name: string;
   errmsg?: string;
-  type?: string;
+  type?: "number" | "text" | "password" | "tel" | "url";
   disabled?: boolean;
   style?: CSSProperties;
   placeholder?: string;

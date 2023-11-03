@@ -13,7 +13,7 @@ const boxStyle = {
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
-  alignItems: "center",
+  alignItems: "flex-start",
   gap: 2,
 };
 
@@ -42,8 +42,7 @@ const textStyle = {
 
 const logoStyle = {
   width: "100%",
-  maxWidth: "160px",
-  alignSelf: "center",
+  maxWidth: "200px",
 };
 
 const forgotStyle = {

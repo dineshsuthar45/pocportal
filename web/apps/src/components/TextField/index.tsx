@@ -1,5 +1,6 @@
 import { FormControl, TextField, FormHelperText } from "@mui/material";
 import { IGlobaltextFieldProps } from "../../types";
+import { MTextfield } from "@jp/material-core-master";
 
 const FilledTextField = ({
   id,
@@ -58,10 +59,11 @@ const OutlinedTextField = ({
   InputProps,
 }: IGlobaltextFieldProps) => {
   return (
-    <FormControl variant="outlined" size="medium">
-      <TextField
+    <FormControl fullWidth>
+      <MTextfield
         id={id}
-        variant="outlined"
+        variant="standard"
+        color="primary"
         name={name}
         label={label}
         placeholder={placeholder}
@@ -72,7 +74,7 @@ const OutlinedTextField = ({
         InputProps={InputProps}
         autoComplete="off"
         disabled={disabled}
-        style={{
+        sx={{
           ...style,
           width: "100%",
           fontFamily: "Public Sans, sans-serif",
@@ -84,7 +86,7 @@ const OutlinedTextField = ({
           sx={{
             color: "#F44336",
             fontWeight: 600,
-            fontFamily: "Public Sans, sans-serif",
+            ml: 0,
           }}
         >
           {errmsg}

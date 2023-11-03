@@ -34,7 +34,19 @@ export interface ButtonProps {
 	 * [palette customization guide](https://mui.com/material-ui/customization/palette/#adding-new-colors).
 	 * @default 'secondary'
 	 */
-	color?: 'inherit' | 'primary' | 'secondary' | 'success' | 'error' | 'info' | 'warning' | 'pending' | 'buy' | 'sell' | 'engaged' | 'inactive';
+	color?:
+		| 'inherit'
+		| 'primary'
+		| 'secondary'
+		| 'success'
+		| 'error'
+		| 'info'
+		| 'warning'
+		| 'pending'
+		| 'buy'
+		| 'sell'
+		| 'engaged'
+		| 'inactive';
 	/**
 	 * If `true`, the component is disabled.
 	 * @default false
@@ -95,4 +107,10 @@ export interface ButtonProps {
 	 * @default 'text'
 	 */
 	variant?: 'text' | 'outlined' | 'contained';
+
+	/**
+	 * The variant to use.
+	 * @default 'button'
+	 */
+	type?: 'button' | 'submit' | 'reset';
 }

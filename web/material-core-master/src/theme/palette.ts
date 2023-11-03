@@ -41,6 +41,10 @@ const lightPalette: ExtendedPaletteOptions = {
 		light: MColours.lightGreen,
 		dark: MColours.darkGreen,
 	},
+	background: {
+		paper: MColours.lightBlueScale[50],
+		default: MColours.lightBlueScale[50],
+	},
 	engaged: {
 		main: MColours.teal,
 	},
@@ -53,10 +57,10 @@ const lightPalette: ExtendedPaletteOptions = {
 	sell: {
 		main: MColours.sellFuchsia,
 	},
-
 	inactive: {
 		main: MColours.greyScale[400],
 	},
+	text: {},
 };
 
 const darkPalette: ExtendedPaletteOptions = {
@@ -97,7 +101,6 @@ const darkPalette: ExtendedPaletteOptions = {
 	engaged: {
 		main: MColours.teal,
 	},
-
 	pending: {
 		main: MColours.yellow,
 	},
@@ -107,7 +110,6 @@ const darkPalette: ExtendedPaletteOptions = {
 	sell: {
 		main: MColours.sellFuchsia,
 	},
-
 	inactive: {
 		main: MColours.greyScale[500],
 	},

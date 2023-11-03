@@ -1,6 +1,6 @@
 {
 	"name": "@jp/material-core-master",
-	"version": "1.4.0",
+	"version": "1.4.3",
 	"main": "dist/index.js",
 	"module": "dist/index.es.js",
 	"files": [

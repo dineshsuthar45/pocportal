@@ -26,7 +26,7 @@ const ColoredTypo = ({ label, variant, style }: IGlobalTypoProps) => {
 const Footer = ({ style }: { style?: CSSProperties }) => {
   return (
     <Typography
-      variant={"subtitle1"}
+      variant={"body1"}
       sx={{ fontWeight: 600, color: "primary.main" }}
       style={{ ...style }}
     >

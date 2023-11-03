@@ -1,22 +1,23 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../store/store";
-import { loginUser } from "../../store/reducers/authSlice";
+import { ILogindata, loginUser } from "../../store/reducers/authSlice";
+import { LOCALSTORAGE_VARIABLE } from "../../util/constants";
 
 export interface ILoginErrSchema {
-  email_id?: string;
+  username?: string;
   password?: string;
 }
 
 export interface ILoginSchema {
-  email_id: string;
+  username: string;
   password: string;
 }
 
 export interface IFormInputFilleds {
   id: number;
   lable: string;
-  type: string;
+  type: "number" | "text" | "password" | "tel" | "url";
   disable: boolean;
   placeholder: string;
   value: keyof ILoginSchema;
@@ -28,9 +29,11 @@ export const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 const isEmailHasErr = (email: string) => {
   if (!email) {
     return "Please Enter Email";
-  } else if (!emailRegex.test(email)) {
-    return "Please Enter Valid Email Address";
-  } else {
+  }
+  // else if (!emailRegex.test(email)) {
+  //   return "Please Enter Valid Email Address";
+  // }
+  else {
     return "";
   }
 };
@@ -38,8 +41,8 @@ const isEmailHasErr = (email: string) => {
 const validateFields = (data: ILoginSchema) => {
   const err: ILoginErrSchema = {};
   let isValid = true;
-  if (isEmailHasErr(data.email_id)) {
-    err.email_id = isEmailHasErr(data.email_id);
+  if (isEmailHasErr(data.username)) {
+    err.username = isEmailHasErr(data.username);
     isValid = false;
   }
   if (!data.password) {
@@ -56,7 +59,7 @@ const useLogin = () => {
   const { isLoading } = useAppSelector((state) => state.auth);
 
   const [loginDetails, setLoginDetails] = useState<ILoginSchema>({
-    email_id: "",
+    username: "",
     password: "",
   });
   const [loginDetailsErr, setLoginDetailsErr] = useState<ILoginErrSchema>({});
@@ -74,20 +77,21 @@ const useLogin = () => {
     setLoginDetailsErr({ ...loginDetailsErr, [name]: "" });
   };
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     if (isLoading) return;
     const hasError = validateFields(loginDetails);
     if (hasError.isValid) {
       try {
         const payload: ILoginSchema = {
-          email_id: loginDetails.email_id,
+          username: loginDetails.username,
           password: loginDetails.password,
         };
         const promise = dispatch(loginUser(payload));
-        promise.unwrap();
+        let res = await promise.unwrap();
+        const data: ILogindata = res.data;
+        localStorage.setItem(LOCALSTORAGE_VARIABLE, JSON.stringify(data));
         setLoginDetails({
-          email_id: "",
+          username: "",
           password: "",
         });
         handleNavigate("/writeup");
@@ -104,6 +108,7 @@ const useLogin = () => {
   };
 
   return {
+    isLoading,
     showPassword,
     handleShowPassword,
     loginDetails,

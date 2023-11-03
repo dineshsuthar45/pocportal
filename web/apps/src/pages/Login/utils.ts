@@ -7,8 +7,8 @@ const formInputFilleds: IFormInputFilleds[] = [
     lable: "Email address",
     type: "text",
     disable: false,
-    value: "email_id",
-    errValue: "email_id",
+    value: "username",
+    errValue: "username",
     placeholder: "demo@xyz.com",
   },
   {

@@ -1,6 +1,7 @@
 import React from "react";
 import { Autocomplete, Box, FormControl, TextField } from "@mui/material";
 import { InlineLoader, Loader } from "./loader";
+import { MTextfield } from "@jp/material-core-master";
 
 interface Props {
   isLoading: boolean;
@@ -31,10 +32,11 @@ const TickerAutoComplete = ({
           </Box>
         )}
         renderInput={(params: any) => (
-          <TextField
+          <MTextfield
             {...params}
             label="Ticker"
-            variant="filled"
+            variant="standard"
+            size="medium"
             InputProps={{
               ...params.InputProps,
               style: { ...inputStyle },

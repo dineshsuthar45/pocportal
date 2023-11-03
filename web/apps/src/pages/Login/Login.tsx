@@ -1,26 +1,27 @@
 import ImageComp from "../../components/Image";
 import {
   Box,
-  Checkbox,
-  FormControlLabel,
   Grid,
   IconButton,
   InputAdornment,
+  Typography,
 } from "@mui/material";
-import { ColoredTypo, Footer, Typo } from "../../components/Typography";
-import { TextButton, ContainedButton } from "../../components/Button";
+import { Footer } from "../../components/Typography";
 import { OutlinedTextField } from "../../components/TextField";
-import { boxStyle, logoStyle, forgotStyle } from "./style";
+import { logoStyle } from "./style";
 import { formInputFilleds } from "./utils";
-import logo from "../../assets/Image/login-logo.png";
+import logo from "../../assets/Image/junto_logo.png";
 import VisibilityRoundedIcon from "@mui/icons-material/VisibilityRounded";
-import { EyeIcon } from "../../assets/Svg";
 import { useLogin } from "./Login.hooks";
 
-import SettingsIcon from "@mui/icons-material/Settings";
+import bgImage from "../../assets/Image/Base.png";
+
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import { MButton } from "@jp/material-core-master";
 
 const Login = () => {
   const {
+    isLoading,
     showPassword,
     loginDetails,
     loginDetailsErr,
@@ -30,72 +31,69 @@ const Login = () => {
     handleSubmit,
   } = useLogin();
   return (
-    <Grid container spacing={2} height={"100vh"}>
+    <Grid
+      container
+      spacing={2}
+      height={"100vh"}
+      alignItems={"center"}
+      sx={{
+        backgroundImage: `url(${bgImage})`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+      }}
+    >
       <Grid
         item
-        xs={8}
+        xs={10}
+        sm={8}
+        md={4}
         display={"flex"}
         flexDirection={"column"}
         justifyContent={"center"}
         alignItems={"center"}
-        height={"100%"}
+        height={"fit-content"}
+        minHeight={"80%"}
+        width={"30%"}
+        p={"2rem"}
+        marginLeft={"10%"}
+        sx={{ background: "white", borderRadius: "10px" }}
       >
         <Box
           display={"flex"}
-          justifyContent={"center"}
           flexDirection={"column"}
-          gap={4}
+          alignItems={"flex-start"}
+          gap={3}
+          mt={"auto"}
+          mb={"auto"}
+          width={"90%"}
         >
-          <Typo
-            variant={"h3"}
-            label={"Hi, Welcome back"}
-            style={{ textAlign: "center", fontWeight: 600 }}
-          />
-          <SettingsIcon />
-
-          {/* <ImageComp
-            img={bgImage}
+          <ImageComp
+            img={logo}
             alt={"logo"}
-            style={{
-              width: "100%",
-              maxWidth: "200px",
-              height: "100%",
-              maxHeight: "200px",
-              alignSelf: "center",
-            }}
-          /> */}
-        </Box>
-      </Grid>
-      <Grid
-        item
-        xs={4}
-        display={"flex"}
-        flexDirection={"column"}
-        justifyContent={"center"}
-        alignItems={"center"}
-        p={"0 4rem"}
-      >
-        <Box sx={boxStyle} mt={"auto"} mb={"auto"}>
-          <ImageComp img={logo} alt={"logo"} style={logoStyle} />
-
-          <Typo
-            variant={"h4"}
-            label={"Sign in to Junto"}
-            style={{ textAlign: "center", fontWeight: 600 }}
+            style={{ ...logoStyle, marginBottom: "3rem" }}
           />
 
+          <Typography variant={"h1"} color={"grey.main"}>
+            Sign in
+          </Typography>
           <form
-            onSubmit={handleSubmit}
-            style={{
-              width: "100%",
-              display: "flex",
-              flexDirection: "column",
-              gap: "24px",
+            style={{ width: "100%" }}
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleSubmit();
             }}
           >
-            {formInputFilleds.map((input, index) => (
-              <Box key={index} display={"flex"} flexDirection={"column"}>
+            <Box
+              display={"flex"}
+              flexDirection={"column"}
+              alignItems={"flex-start"}
+              justifyContent={"center"}
+              gap={3}
+              width={"100%"}
+            >
+              {formInputFilleds.map((input) => (
                 <OutlinedTextField
+                  key={input.id}
                   value={loginDetails[input.value] ?? ""}
                   type={
                     input.type === "password"
@@ -123,7 +121,7 @@ const Login = () => {
                                 {showPassword ? (
                                   <VisibilityRoundedIcon />
                                 ) : (
-                                  <EyeIcon />
+                                  <VisibilityOffIcon />
                                 )}
                               </IconButton>
                             </InputAdornment>
@@ -132,37 +130,32 @@ const Login = () => {
                       : undefined
                   }
                 />
-              </Box>
-            ))}
+              ))}
 
-            <Box sx={forgotStyle}>
-              <FormControlLabel
-                control={<Checkbox sx={{ color: "primary.main" }} />}
-                label={
-                  <ColoredTypo
-                    variant={"subtitle1"}
-                    label={"Keep me signed in"}
-                  />
-                }
-              />
-
-              <TextButton
-                label="Reset password?"
-                onClick={() => handleNavigate("/forgot")}
-                style={{
-                  fontSize: "13px",
+              <MButton
+                type="submit"
+                variant="contained"
+                label={isLoading ? "Loading..." : "Sign In"}
+                color="primary"
+                sx={{
+                  marginLeft: "auto",
+                  minWidth: "150px",
+                  borderRadius: "10px",
                 }}
               />
             </Box>
-
-            <ContainedButton
-              label="Login"
-              type="submit"
-              style={{ width: "100%", borderRadius: "8px", height: "48px" }}
-            />
           </form>
         </Box>
-        <Footer style={{ textAlign: "center" }} />
+        <Typography
+          variant={"body1"}
+          sx={{ fontWeight: 600, color: "primary.main" }}
+          style={{ textAlign: "center", width: "90%" }}
+        >
+          <span style={{ color: "#898989", marginRight: "3px" }}>
+            Protected by reCAPTCHA and subject to the
+          </span>
+          Junto Privacy Policy and Terms of Service.
+        </Typography>
       </Grid>
     </Grid>
   );
