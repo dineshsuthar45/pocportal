@@ -7,9 +7,9 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Fragment, useEffect, useState } from "react";
 import { LOCALSTORAGE_VARIABLE } from "./util/constants";
-import SideBar from "./pages/sideBar";
-import TopBar from "./pages/topBar";
+import SideBar from "./components/Table/sideBar";
 import { ILogindata } from "./store/reducers/authSlice";
+import TopBar from "./components/TopBar";
 
 export const getLocalAuth = (): ILogindata => {
   const storedAuth = localStorage.getItem(LOCALSTORAGE_VARIABLE);
@@ -31,6 +31,7 @@ const App = () => {
           </Route>
           <Route path="/" element={<ProtectedRouteWrraper />}>
             <Route path="writeup" element={<WriteUp />} />
+            <Route path="*" element={<Navigate to="writeup" replace />} />
           </Route>
           <Route path="/*" element={<Navigate to="/auth/login" replace />} />
         </Routes>
@@ -82,6 +83,14 @@ const ProtectedRouteWrraper = () => {
   useEffect(() => {
     checkUserToken();
   }, [isLoggedIn]);
+
+  useEffect(() => {
+    if (location) {
+      if (location.pathname === "/") {
+        navigate("/writeup");
+      }
+    }
+  }, [location]);
 
   return (
     <Fragment>
