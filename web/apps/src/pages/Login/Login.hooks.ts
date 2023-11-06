@@ -1,8 +1,9 @@
-import { ChangeEvent, FormEvent, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 import { ILogindata, loginUser } from "../../store/reducers/authSlice";
 import { LOCALSTORAGE_VARIABLE } from "../../util/constants";
+import { toast } from "react-toastify";
 
 export interface ILoginErrSchema {
   username?: string;
@@ -57,6 +58,7 @@ const useLogin = () => {
   const dispatch = useAppDispatch();
 
   const { isLoading } = useAppSelector((state) => state.auth);
+  const [searchParams] = useSearchParams();
 
   const [loginDetails, setLoginDetails] = useState<ILoginSchema>({
     username: "",
@@ -106,6 +108,25 @@ const useLogin = () => {
   const handleNavigate = (path: string) => {
     navigate(path);
   };
+
+  useEffect(() => {
+    let message = searchParams.get("message");
+    let path = searchParams.get("path");
+
+    if (message && path) {
+      console.log(message, path);
+      toast(message, { theme: "light", toastId: 401 });
+      navigate("/login", {
+        replace: true,
+        state: {
+          location: {
+            pathname: JSON.parse(path)?.pathname,
+            search: JSON.parse(path)?.search,
+          },
+        },
+      });
+    }
+  }, [searchParams]);
 
   return {
     isLoading,

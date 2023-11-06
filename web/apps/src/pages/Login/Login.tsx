@@ -6,16 +6,13 @@ import {
   InputAdornment,
   Typography,
 } from "@mui/material";
-import { Footer } from "../../components/Typography";
 import { OutlinedTextField } from "../../components/TextField";
 import { logoStyle } from "./style";
 import { formInputFilleds } from "./utils";
 import logo from "../../assets/Image/junto_logo.png";
 import VisibilityRoundedIcon from "@mui/icons-material/VisibilityRounded";
 import { useLogin } from "./Login.hooks";
-
 import bgImage from "../../assets/Image/Base.png";
-
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { MButton } from "@jp/material-core-master";
 
@@ -26,10 +23,10 @@ const Login = () => {
     loginDetails,
     loginDetailsErr,
     handleChangeLoginDetails,
-    handleNavigate,
     handleShowPassword,
     handleSubmit,
   } = useLogin();
+
   return (
     <Grid
       container

@@ -32,7 +32,7 @@ const responseErrorHandler = (error: any) => {
   } else if (error?.response?.status >= 400 && error?.response?.status <= 499) {
     if (error.response.status === 401) {
       localStorage.clear();
-      window.location.href = `/login?message=${encodeURIComponent(
+      window.location.href = `/auth/login?message=${encodeURIComponent(
         "Unauthorized"
       )}&&path=${JSON.stringify(window.location)}`;
     } else if (error.response?.data?.Message) {
@@ -40,7 +40,9 @@ const responseErrorHandler = (error: any) => {
     }
   } else if (error?.response?.status >= 500) {
     if (error.response?.data?.Message) {
-      toast.error(error.response?.data.Message ?? "Internal Server Error");
+      toast.error(error.response?.data.Message ?? "Internal Server Error", {
+        toastId: "500",
+      });
     } else {
       toast.error("Internal Server Error");
     }

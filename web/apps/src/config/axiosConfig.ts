@@ -8,15 +8,6 @@ import {
 
 export let BASE_URL = import.meta.env.VITE_APP_API_ENDPOINT;
 
-export interface ILocaldata {
-  username: string;
-  role: string;
-  token: string;
-  userid: string;
-  image_url: string;
-  preferred_lng: string;
-}
-
 const headers = {
   "Access-Control-Allow-Origin": "*",
   "Content-Type": "application/x-www-form-urlencoded",
