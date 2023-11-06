@@ -2,14 +2,15 @@ import { Routes, Route, useNavigate, Outlet, Navigate } from "react-router-dom";
 import Login from "./pages/Login/Login";
 import WriteUp from "./pages/Writeup/Writeup";
 import { ColorModeContext, IColorContext, useMode } from "./theme";
-import { Theme, ThemeProvider } from "@mui/material";
+import { Box, Theme, ThemeProvider } from "@mui/material";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Fragment, useEffect, useState } from "react";
 import { LOCALSTORAGE_VARIABLE } from "./util/constants";
-import SideBar from "./components/Table/sideBar";
 import { ILogindata } from "./store/reducers/authSlice";
 import TopBar from "./components/TopBar";
+import SideBar from "./components/SideBar";
+import { ProSidebarProvider } from "react-pro-sidebar";
 
 export const getLocalAuth = (): ILogindata => {
   const storedAuth = localStorage.getItem(LOCALSTORAGE_VARIABLE);
@@ -44,7 +45,6 @@ export default App;
 
 const AuthWrraper = () => {
   const navigate = useNavigate();
-
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const checkUserToken = () => {
@@ -93,10 +93,22 @@ const ProtectedRouteWrraper = () => {
   }, [location]);
 
   return (
-    <Fragment>
-      {isLoggedIn && <SideBar />}
-      {isLoggedIn && <TopBar />}
-      <Outlet />
-    </Fragment>
+    <Box
+      display={"flex"}
+      alignItems={"flex-start"}
+      justifyContent={"space-between"}
+    >
+      {isLoggedIn && (
+        <ProSidebarProvider>
+          <SideBar />
+        </ProSidebarProvider>
+      )}
+      {
+        <Box className={"content"}>
+          <TopBar />
+          <Outlet />
+        </Box>
+      }
+    </Box>
   );
 };

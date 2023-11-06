@@ -14,9 +14,9 @@ export interface IGlobalTableProps {
 
 export interface IGlobalButtonProps {
   label: any;
-  sublabel?: string;
+  sublabel?: string | React.ReactNode;
   disabled?: boolean;
-  onClick?: () => void;
+  onClick?: (e: any) => void;
   style?: CSSProperties;
   type?: string;
 }

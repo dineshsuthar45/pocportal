@@ -17,7 +17,7 @@ const Writeup = () => {
           containerStyle={{ width: "20%", maxWidth: "250px" }}
           inputStyle={{ borderBottom: "1px solid #405270" }}
         />
-        {selectedTicker && <WriteupContent />}
+        {<WriteupContent />}
       </Box>
     </>
   );

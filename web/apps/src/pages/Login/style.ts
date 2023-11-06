@@ -1,4 +1,4 @@
-import bgImage from "../../assets/Image/bg-image.png";
+import bgImage from "../../assets/images/bg-image.png";
 
 const bgImageStyle = {
   backgroundImage: `url(${bgImage})`,

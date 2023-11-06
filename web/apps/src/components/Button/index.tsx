@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import { IGlobalButtonProps } from "../../types";
 
 const ContainedButton = ({
@@ -47,6 +47,39 @@ const OutlinedButton = ({
   );
 };
 
+const OutlinedIconButton = ({
+  label,
+  onClick,
+  disabled,
+  style,
+  sublabel,
+  type,
+}: IGlobalButtonProps) => {
+  const buttonType = type === "reset" || type === "submit" ? type : "button";
+  return (
+    <Button
+      variant="outlined"
+      color="primary"
+      type={buttonType}
+      disabled={disabled}
+      onClick={onClick}
+      sx={{ width: "fit-content" }}
+      style={{ ...style, borderRadius: "10px" }}
+    >
+      <Typography
+        variant="subtitle1"
+        display={"flex"}
+        gap={2}
+        alignItems={"center"}
+        textTransform={"capitalize"}
+      >
+        {sublabel}
+        {label}
+      </Typography>
+    </Button>
+  );
+};
+
 const TextButton = ({
   label,
   onClick,
@@ -74,4 +107,4 @@ const TextButton = ({
   );
 };
 
-export { ContainedButton, OutlinedButton, TextButton };
+export { ContainedButton, OutlinedButton, TextButton, OutlinedIconButton };

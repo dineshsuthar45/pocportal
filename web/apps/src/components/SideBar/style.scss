@@ -1,0 +1,271 @@
+// Button when sidebar is collapsed
+.toggleBtnCollapsed {
+  display: flex !important;
+  width: 28px;
+  height: 28px;
+  padding: 6px !important;
+  align-items: flex-start !important;
+  gap: 8px;
+  border-radius: 8px !important;
+  border: 1px solid #467fd8 !important;
+  background: #eef3fb;
+  min-width: 28px !important;
+  position: absolute;
+  z-index: 999;
+  left: 85px;
+  top: 35px;
+  cursor: pointer;
+}
+
+#sidebar {
+  ::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+  }
+
+  // /* Handle */
+  ::-webkit-scrollbar-thumb {
+    visibility: hidden;
+  }
+
+  // Sidebar section
+  .sidebarContainer {
+    display: flex;
+    font-family: "Poppins", sans-serif;
+    height: 100vh;
+    border-right: 2px solid #f3f3f3;
+    background: #fff;
+    min-width: 320px !important;
+    .ps-sidebar-container {
+      width: 100%;
+      background-color: #fff;
+    }
+  }
+
+  // Top
+  .header {
+    height: 98px;
+    line-height: 75px;
+    padding: 20px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+    border-bottom: 2px solid #f3f3f3;
+    margin-bottom: 12px;
+  }
+
+  // logo
+  .logoImg {
+    width: 213px !important;
+    height: 58px !important;
+  }
+
+  // Button when sidebar is not-collapsed
+  .toggleBtn {
+    display: flex !important;
+    width: 28px;
+    height: 28px;
+    padding: 6px !important;
+    align-items: flex-start !important;
+    gap: 8px;
+    border-radius: 8px !important;
+    border: 1px solid #467fd8 !important;
+    background: #eef3fb;
+    min-width: 28px !important;
+    cursor: pointer;
+  }
+
+  // Title "Overview"
+  .titleMenu {
+    display: flex;
+    width: 208px;
+    padding: 18px 28px;
+    align-items: flex-start;
+    color: #5c5e64;
+    font-family: "Poppins", sans-serif;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 12px; /* 120% */
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+  }
+
+  // single menu item not selected
+  .menuItem {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    margin: 1px 0;
+    color: #5a5a5a;
+    margin-bottom: 6px;
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    border-radius: 0;
+    color: #5a5a5a;
+    min-height: 38px;
+    background-color: transparent;
+    &:hover {
+      background-color: rgba(146, 169, 206, 0.16);
+    }
+    //
+    ul {
+      padding: 4px 8px 4px 16px;
+      li {
+        border-radius: 8px;
+      }
+    }
+  }
+
+  // Single Menu Item selected
+  .menuItemActive {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    margin-bottom: 6px;
+    font-weight: 500;
+    border-radius: 0;
+    color: #467fd8;
+    min-height: 38px;
+    font-size: 14px;
+    background-color: rgba(81, 134, 218, 0.2);
+    &:hover {
+      background-color: rgba(81, 134, 218, 0.2) !important;
+    }
+    //
+    ul {
+      padding: 4px 8px 4px 16px;
+      li {
+        border-radius: 8px;
+      }
+    }
+    //
+    .ps-submenu-content {
+      background-color: #eef3fb !important;
+    }
+  }
+
+  // Submenu When not selected
+  .subMenu {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    margin: 1px 0;
+    color: #5a5a5a;
+    margin-bottom: 6px;
+
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    border-radius: 0;
+    color: #5a5a5a;
+    min-height: 38px;
+    background-color: transparent;
+    //
+    ul {
+      padding: 4px 8px 4px 16px;
+      li {
+        border-radius: 8px;
+      }
+    }
+    //
+    a {
+      height: 50px !important;
+      padding: 0 28px !important;
+      &:hover {
+        background-color: rgba(81, 134, 218, 0.2) !important;
+      }
+    }
+    //
+    .ps-menu-suffix {
+      position: relative !important;
+      left: 4px !important;
+    }
+    //
+    .ps-menu-icon {
+      width: 25px !important;
+      height: 25px !important;
+      min-width: none !important;
+    }
+  }
+
+  // When Submenu is active
+  .subMenuActive {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    margin-bottom: 6px;
+    font-weight: 500;
+    border-right: 2px solid #5186da;
+    border-radius: 0;
+    color: #467fd8;
+    min-height: 38px;
+    font-size: 14px;
+    background-color: #eef3fb;
+    // Hover
+    &:hover {
+      background-color: #eef3fb !important;
+    }
+    // MainList
+    ul {
+      padding: 4px 8px 4px 16px;
+      li {
+        border-radius: 8px;
+      }
+    }
+    // firstDiv
+    div {
+      background-color: #eef3fb !important;
+    }
+    // ToggleIcon
+    .ps-menu-suffix {
+      position: relative;
+      left: 0;
+    }
+    // ListBackGround
+    a {
+      &:hover {
+        background-color: rgba(81, 134, 218, 0.2) !important;
+      }
+    }
+    // IconImage
+    img {
+      width: 25px !important;
+    }
+  }
+
+  // sidebar collpased
+  .sidebarCollaps {
+    width: 100px !important;
+    min-width: 100px !important;
+    .ps-sidebar-container {
+      background-color: #fff !important;
+    }
+  }
+
+  // ripple effect css
+  .rippleEffect {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.1);
+    transform: scale(0);
+    animation: ripple 1s linear !important;
+  }
+  @keyframes ripple {
+    to {
+      transform: scale(3);
+      opacity: 0;
+    }
+  }
+
+  // drop icon
+  .ps-submenu-expand-icon {
+    visibility: hidden;
+  }
+}

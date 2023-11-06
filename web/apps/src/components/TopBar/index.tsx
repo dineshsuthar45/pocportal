@@ -21,8 +21,11 @@ const TopBar = () => {
       justifyContent={"space-between"}
       alignItems={"center"}
       position={"sticky"}
+      top={0}
       boxShadow="0px 1px 2px 0px rgba(21, 30, 40, 0.08), 0px 2px 4px 0px rgba(13, 23, 33, 0.08)"
       p={2}
+      bgcolor={"white"}
+      zIndex={101}
     >
       <Typo
         variant="h6"
