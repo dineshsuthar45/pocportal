@@ -9,7 +9,6 @@ import {
   CsvIcon,
 } from "../../assets/Svg";
 import { SvgIconProps } from "@mui/material";
-import Word from "../../assets/Image/word.png";
 
 interface IProfileProps {
   id: number;
@@ -22,7 +21,8 @@ interface IExportProps {
   id: number;
   icon: ComponentType<SvgIconProps>;
   bgColor: string;
-  display: string;
+  color: string;
+  disabled: boolean;
   label: string;
   handleAction: () => void;
 }
@@ -30,6 +30,7 @@ interface IExportProps {
 const handleProfile = () => {
   alert("I m from profile");
 };
+
 
 const handleHelp = () => {
   alert("I m from Help");
@@ -64,34 +65,38 @@ const exportPopOver: IExportProps[] = [
   {
     id: 1,
     icon: PdfIcon,
-    bgColor: "red",
+    bgColor: "rgba(237, 103, 106, 0.20)",
+    color: "#E5252A",
     handleAction: handleHelp,
-    label: "PDf",
-    display: "none",
+    label: "Pdf",
+    disabled: false,
   },
   {
     id: 1,
     icon: Docsicon,
-    bgColor: "blue",
+    bgColor: "rgba(100, 181, 246, 0.20)",
+    color: "#467FD8",
     handleAction: handleHelp,
     label: "Word",
-    display: "none",
+    disabled: false,
   },
   {
     id: 1,
     icon: ExcelIcon,
-    bgColor: "blue",
+    bgColor: "rgba(0, 115, 59, 0.20)",
+    color: "#00733B",
     handleAction: handleHelp,
     label: "Word",
-    display: "none",
+    disabled: false,
   },
   {
     id: 1,
     icon: CsvIcon,
-    bgColor: "blue",
+    bgColor: "rgba(0, 115, 59, 0.20)",
+    color: "#00733B",
     handleAction: handleHelp,
     label: "Word",
-    display: "none",
+    disabled: true,
   },
 ];
 

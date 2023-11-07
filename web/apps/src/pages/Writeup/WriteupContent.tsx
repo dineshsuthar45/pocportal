@@ -108,50 +108,6 @@ const WriteupContent = () => {
           ))}
         </Box>
 
-        {/* <Box display={"flex"} gap={2}>
-        <Box
-          display={"flex"}
-          flexDirection={"column"}
-          bgcolor={"#FFFADA"}
-          borderRadius={"8px"}
-          width={"100%"}
-          gap={2}
-          p={"10px 24px"}
-        >
-          <Typo label="5D" variant={"h6"} style={{ fontSize: "18px" }} />
-          <Box
-            display={"flex"}
-            justifyContent={"space-between"}
-            alignItems={"center"}
-          >
-            {Data5D.map((item, index) => (
-              <React.Fragment key={index}>
-                <Typography
-                  variant="subtitle1"
-                  color={"secondary.main"}
-                  textAlign={"center"}
-                >
-                  {item.label ?? "---"}
-                  <Typography variant="subtitle1">{item.sublabel}</Typography>
-                </Typography>
-                {index < tickertext.length - 1 && (
-                  <Divider
-                    orientation="vertical"
-                    variant="middle"
-                    sx={{
-                      borderWidth: "1px",
-                      margin: "0 10px",
-                      backgroundColor: "#f2f2f2",
-                    }}
-                    flexItem
-                  />
-                )}
-              </React.Fragment>
-            ))}
-          </Box>
-        </Box>
-      </Box> */}
-
         <Box display={"flex"} gap={2}>
           <Box
             display={"flex"}

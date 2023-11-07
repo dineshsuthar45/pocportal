@@ -6,7 +6,6 @@ import { Typo } from "../../components/Typography";
 import ProfilePopOver from "../../components/PopOver/Index";
 import { useState } from "react";
 import SwitchButton from "./SwitchButton";
-import profileImg from "../../assets/Image/profileImg.png";
 import { SettingIcon } from "../../assets/Svg";
 
 const TopBar = () => {

@@ -1,23 +1,8 @@
-import {
-  Avatar,
-  Divider,
-  IconButton,
-  ListItemIcon,
-  Menu,
-  MenuItem,
-  Typography,
-} from "@mui/material";
+import { Menu, MenuItem, Typography } from "@mui/material";
 import { PopOverProps } from "./Index";
-import { Logout } from "@mui/icons-material";
-import { imgStyle } from "../../pages/topBar/style";
-import { topBarlogo } from "../../pages/topBar/util";
-import ImageComp from "../Image";
 import { exportPopOver } from "./util";
 
 const ExportPopOver = ({ open, handleClose }: PopOverProps) => {
-  const handleLogout = () => {
-    alert("logOut");
-  };
   return (
     <Menu
       id="message_menu"
@@ -35,6 +20,9 @@ const ExportPopOver = ({ open, handleClose }: PopOverProps) => {
             height: 32,
             ml: -0.5,
             mr: 1,
+          },
+          "& .css-6hp17o-MuiList-root-MuiMenu-list": {
+            width: "210px",
           },
           "&:before": {
             content: '""',
@@ -54,10 +42,41 @@ const ExportPopOver = ({ open, handleClose }: PopOverProps) => {
       anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
     >
       {exportPopOver.map((item) => (
-        <MenuItem onClick={handleClose} key={item.id}>
+        <MenuItem
+          onClick={handleClose}
+          key={item.id}
+          disabled={item.disabled}
+          sx={{
+            padding: "12px 28px",
+            textAlign: "center",
+            ml: "5px",
+            mr: "5px",
+            "&:hover": {
+              backgroundColor: item.bgColor,
+              borderRadius: "12px",
+              padding: "12px 28px",
+              ml: "5px",
+              mr: "5px",
+            },
+            "&:focus": {
+              backgroundColor: item.bgColor,
+              borderRadius: "12px",
+              padding: "12px 28px",
+              ml: "5px",
+              mr: "5px",
+            },
+            "&:active": {
+              backgroundColor: item.bgColor,
+              borderRadius: "12px",
+              padding: "12px 28px",
+              ml: "5px",
+              mr: "5px",
+            },
+          }}
+        >
           <Typography
             variant="h6"
-            color={"#467FD8"}
+            color={item.color}
             lineHeight={"24px"}
             fontSize={"15px"}
             fontWeight={600}

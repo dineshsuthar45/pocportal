@@ -104,7 +104,7 @@ const ProtectedRouteWrraper = () => {
         </ProSidebarProvider>
       )}
       {
-        <Box className={"content"}>
+        <Box className={"content"} bgcolor={"background.paper"}>
           <TopBar />
           <Outlet />
         </Box>
